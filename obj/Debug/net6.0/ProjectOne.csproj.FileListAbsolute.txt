@@ -23,3 +23,6 @@ E:\GameDev\ProjectOne\obj\Debug\net6.0\refint\ProjectOne.dll
 E:\GameDev\ProjectOne\obj\Debug\net6.0\ProjectOne.pdb
 E:\GameDev\ProjectOne\obj\Debug\net6.0\ProjectOne.genruntimeconfig.cache
 E:\GameDev\ProjectOne\obj\Debug\net6.0\ref\ProjectOne.dll
+E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\blue.xnb
+E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\FiveByFiveGrid.xnb
+E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\red.xnb
