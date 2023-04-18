@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/GameDev/ProjectOne/Content/Sprites/blue.png</File>
-    <File>E:/GameDev/ProjectOne/Content/Sprites/FiveByFiveGrid.png</File>
-    <File>E:/GameDev/ProjectOne/Content/Sprites/red.png</File>
+    <File>e:/GameDev/ProjectOne/Content/Sprites/blue.png</File>
+    <File>e:/GameDev/ProjectOne/Content/Sprites/FiveByFiveGrid.png</File>
+    <File>e:/GameDev/ProjectOne/Content/Sprites/red.png</File>
+    <File>e:/GameDev/ProjectOne/Content/Sprites/stars.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
