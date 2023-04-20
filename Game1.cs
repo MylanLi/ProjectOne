@@ -65,7 +65,7 @@ public class Game1 : Game
         
         _spriteBatch.End();
 
-        animatedSprite.Draw(_spriteBatch, new Vector2(400, 200));
+        animatedSprite.Draw(gameTime, _spriteBatch, new Vector2(400, 200));
 
         base.Draw(gameTime);
     }

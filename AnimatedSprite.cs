@@ -8,6 +8,7 @@ public class AnimatedSprite {
     public int Columns { get; set; }
     private int currentFrame;
     private int totalFrames;
+    private double animationTimer;
 
     public AnimatedSprite(Texture2D texture, int rows, int columns) {
         Texture = texture;
@@ -15,17 +16,16 @@ public class AnimatedSprite {
         Columns = columns;
         currentFrame = 0;
         totalFrames = Rows * Columns;
+        animationTimer = 0;
     }
 
     public void Update() {
-        currentFrame++;
-        if (currentFrame == totalFrames)
-            currentFrame = 0;
+
     }
 
     
 
-    public void Draw(SpriteBatch spriteBatch, Vector2 location) {
+    public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 location) {
         int width = Texture.Width / Columns;
         int height = Texture.Height / Rows;
         int row = currentFrame / Columns;
@@ -33,6 +33,15 @@ public class AnimatedSprite {
     
         Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
         Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+
+        animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+
+        if(animationTimer > 2) {
+            currentFrame++;
+            if (currentFrame == totalFrames)
+                currentFrame = 0;
+            animationTimer -= 2;
+        }
     
         spriteBatch.Begin();
         spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
