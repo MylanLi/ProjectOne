@@ -14,6 +14,9 @@ public class Game1 : Game
     private Texture2D tex2DFiveByFiveGrid;
     private Texture2D tex2DStars;
     private AnimatedSprite animatedSprite;
+    private MouseState oldMouseState;
+
+    private Vector2 starLocation = new Vector2(180,180);
 
     public Game1()
     {
@@ -49,6 +52,12 @@ public class Game1 : Game
         // TODO: Add your update logic here
         animatedSprite.Update();
 
+        MouseState newMouseState = Mouse.GetState();
+        if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+            starLocation = new Vector2(newMouseState.X, newMouseState.Y);
+        }
+        oldMouseState = newMouseState;
+
         base.Update(gameTime);
     }
 
@@ -65,7 +74,7 @@ public class Game1 : Game
         
         _spriteBatch.End();
 
-        animatedSprite.Draw(gameTime, _spriteBatch, new Vector2(400, 200));
+        animatedSprite.Draw(gameTime, _spriteBatch, starLocation);
 
         base.Draw(gameTime);
     }
