@@ -6,16 +6,17 @@ namespace ProjectOne;
 
 public class Game1 : Game
 {
+    
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-
+    //textures start here
     private Texture2D tex2DBlue;
     private Texture2D tex2DRed;
     private Texture2D tex2DFiveByFiveGrid;
     private Texture2D tex2DStars;
+    //variables from learning, TODO: better way to do this
     private AnimatedSprite animatedSprite;
     private MouseState oldMouseState;
-
     private Vector2 starLocation = new Vector2(180,180);
 
     public Game1()
@@ -52,11 +53,14 @@ public class Game1 : Game
         // TODO: Add your update logic here
         animatedSprite.Update();
 
+        /*
         MouseState newMouseState = Mouse.GetState();
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
             starLocation = new Vector2(newMouseState.X, newMouseState.Y);
         }
         oldMouseState = newMouseState;
+        */
+
 
         base.Update(gameTime);
     }
@@ -72,9 +76,10 @@ public class Game1 : Game
         
         _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(0, 0, 320, 320), Color.White);
         
+        
         _spriteBatch.End();
-
-        animatedSprite.Draw(gameTime, _spriteBatch, starLocation);
+        animatedSprite.Draw(gameTime, _spriteBatch);
+        //animatedSprite.Draw(gameTime, _spriteBatch, starLocation);
 
         base.Draw(gameTime);
     }
