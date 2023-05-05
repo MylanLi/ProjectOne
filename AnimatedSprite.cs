@@ -2,6 +2,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+namespace ProjectOne;
+
 public class AnimatedSprite {
 
     public Texture2D Texture { get; set; }

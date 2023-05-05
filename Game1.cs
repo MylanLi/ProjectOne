@@ -9,6 +9,7 @@ public class Game1 : Game
     
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private GraphicsController graphicsController;
     //textures start here
     private Texture2D tex2DBlue;
     private Texture2D tex2DRed;
@@ -29,7 +30,7 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
+        graphicsController = new GraphicsController(Content);
         base.Initialize();
     }
 
@@ -38,8 +39,9 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        tex2DBlue = Content.Load<Texture2D>("Sprites/blue");
-        tex2DRed = Content.Load<Texture2D>("Sprites/red");
+
+        //tex2DBlue = Content.Load<Texture2D>("Sprites/blue");
+        //tex2DRed = Content.Load<Texture2D>("Sprites/red");
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
         tex2DStars = Content.Load<Texture2D>("Sprites/stars");
         animatedSprite = new AnimatedSprite(tex2DStars,1,3);
@@ -75,10 +77,11 @@ public class Game1 : Game
         _spriteBatch.Begin();
         
         _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(0, 0, 320, 320), Color.White);
-        
+        graphicsController.Draw(_spriteBatch);
         
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
+        
         //animatedSprite.Draw(gameTime, _spriteBatch, starLocation);
 
         base.Draw(gameTime);
