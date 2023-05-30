@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+//for write line
+using System;
+
 namespace ProjectOne;
 
 public class Game1 : Game
@@ -55,13 +58,26 @@ public class Game1 : Game
         // TODO: Add your update logic here
         animatedSprite.Update();
 
-        /*
+        
         MouseState newMouseState = Mouse.GetState();
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-            starLocation = new Vector2(newMouseState.X, newMouseState.Y);
+            //starLocation = new Vector2(newMouseState.X, newMouseState.Y);
+            //Console.WriteLine(starLocation);
         }
         oldMouseState = newMouseState;
-        */
+
+        bool mouseOverSomething = false;
+
+        if (Intersects(new Vector2(newMouseState.X, newMouseState.Y), graphicsController.blueBoundBox)) {
+            Console.WriteLine("Blue");
+        }
+
+        
+
+        if (!mouseOverSomething)
+        {
+            Console.WriteLine("Mouse Over:  None");
+        }
 
 
         base.Update(gameTime);
@@ -86,4 +102,46 @@ public class Game1 : Game
 
         base.Draw(gameTime);
     }
+
+    //testing out raycast picking
+    //public Ray CalculateRay(Vector2 mouseLocation, Matrix view, Matrix projection, Viewport viewport)
+    public Ray CalculateRay(Vector2 mouseLocation)
+    {
+        Vector3 nearPoint = new Vector3(mouseLocation.X,mouseLocation.Y, 0.0f);
+    
+        Vector3 farPoint = new Vector3(mouseLocation.X,mouseLocation.Y, 1.0f);
+    
+                Vector3 direction = farPoint - nearPoint;
+                direction.Normalize();
+    
+        return new Ray(nearPoint, direction);
+    }
+
+
+
+    public float? IntersectDistance(BoundingBox box, Vector2 mouseLocation)
+    {
+        Ray mouseRay = CalculateRay(mouseLocation);
+        return mouseRay.Intersects(box);
+    }
+
+
+
+    public bool Intersects(Vector2 mouseLocation, BoundingBox box)
+    {
+        float? distance = IntersectDistance(box, mouseLocation);
+    
+        if (distance != null)
+        {
+            return true;
+        }
+                
+    
+        return false;
+    }
+
+
+
 }
+
+
