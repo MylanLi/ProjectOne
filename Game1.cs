@@ -58,27 +58,23 @@ public class Game1 : Game
         // TODO: Add your update logic here
         animatedSprite.Update();
 
-        
+        bool mouseOverSomething = false;
         MouseState newMouseState = Mouse.GetState();
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
             //starLocation = new Vector2(newMouseState.X, newMouseState.Y);
-            //Console.WriteLine(starLocation);
+            //Console.WriteLine(starLocation);        
+            if (Intersects(new Vector2(newMouseState.X, newMouseState.Y), graphicsController.blueBoundBox)) {
+                Console.WriteLine("Blue");
+                mouseOverSomething = true;
+            }
+
+            if (!mouseOverSomething)
+            {
+                Console.WriteLine("Mouse Over:  None");
+            }
+
         }
         oldMouseState = newMouseState;
-
-        bool mouseOverSomething = false;
-
-        if (Intersects(new Vector2(newMouseState.X, newMouseState.Y), graphicsController.blueBoundBox)) {
-            Console.WriteLine("Blue");
-        }
-
-        
-
-        if (!mouseOverSomething)
-        {
-            Console.WriteLine("Mouse Over:  None");
-        }
-
 
         base.Update(gameTime);
     }
@@ -109,7 +105,7 @@ public class Game1 : Game
     {
         Vector3 nearPoint = new Vector3(mouseLocation.X,mouseLocation.Y, 0.0f);
     
-        Vector3 farPoint = new Vector3(mouseLocation.X,mouseLocation.Y, 1.0f);
+        Vector3 farPoint = new Vector3(mouseLocation.X,mouseLocation.Y, 10.0f);
     
                 Vector3 direction = farPoint - nearPoint;
                 direction.Normalize();
@@ -139,7 +135,6 @@ public class Game1 : Game
     
         return false;
     }
-
 
 
 }
