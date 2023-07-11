@@ -20,6 +20,11 @@ public class Game1 : Game
     private MouseState oldMouseState;
     private Vector2 starLocation = new Vector2(180,180);
 
+    //attempts at playarea
+    //attempts at drawing spritefonts
+    private SpriteFont font;
+    private int score = 0;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -45,6 +50,10 @@ public class Game1 : Game
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
         tex2DStars = Content.Load<Texture2D>("Sprites/stars");
         animatedSprite = new AnimatedSprite(tex2DStars,1,3);
+    
+        //attempts at playarea
+        //attempts at spritefont
+        font = Content.Load<SpriteFont>("BasicText");
     }
 
     protected override void Update(GameTime gameTime)
@@ -78,6 +87,7 @@ public class Game1 : Game
         
         _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(0, 0, 320, 320), Color.White);
         graphicsController.Draw(_spriteBatch);
+        _spriteBatch.DrawString(font, "Some Text", new Vector2(50, 50), Color.Black);
         
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
