@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/GameDev/ProjectOne/Content/BasicText.spritefont","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/BasicText.xnb","FontDescriptionProcessor","SpriteFontContent",2008,70687,0.2856456
 "E:/GameDev/ProjectOne/Content/Sprites/blue.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/blue.xnb","TextureProcessor","Texture2DContent",195,16469,0.2591058
 "E:/GameDev/ProjectOne/Content/Sprites/FiveByFiveGrid.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/FiveByFiveGrid.xnb","TextureProcessor","Texture2DContent",3127,409685,0.0287122
 "E:/GameDev/ProjectOne/Content/Sprites/red.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/red.xnb","TextureProcessor","Texture2DContent",209,16469,0.0077411

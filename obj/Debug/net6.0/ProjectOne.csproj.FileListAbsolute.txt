@@ -27,3 +27,4 @@ E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\blue.xnb
 E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\FiveByFiveGrid.xnb
 E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\red.xnb
 E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\Sprites\stars.xnb
+E:\GameDev\ProjectOne\bin\Debug\net6.0\Content\BasicText.xnb
