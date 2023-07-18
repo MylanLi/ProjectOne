@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>e:/GameDev/ProjectOne/Content/Sprites/blue.png</SourceFile>
+  <SourceFile>E:/GameDev/ProjectOne/Content/Sprites/blue.png</SourceFile>
   <SourceTime>2022-03-04T22:36:37.0910533+11:00</SourceTime>
-  <DestFile>e:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/blue.xnb</DestFile>
-  <DestTime>2023-04-14T21:32:10.0728927+10:00</DestTime>
+  <DestFile>E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/blue.xnb</DestFile>
+  <DestTime>2023-07-18T17:43:31.6327986+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-11T02:17:54+10:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

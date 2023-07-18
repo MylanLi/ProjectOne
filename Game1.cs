@@ -11,19 +11,17 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private GraphicsController graphicsController;
     //textures start here
-    private Texture2D tex2DBlue;
-    private Texture2D tex2DRed;
     private Texture2D tex2DFiveByFiveGrid;
     private Texture2D tex2DStars;
     //variables from learning, TODO: better way to do this
     private AnimatedSprite animatedSprite;
-    private MouseState oldMouseState;
     private Vector2 starLocation = new Vector2(180,180);
 
     //attempts at playarea
     //attempts at drawing spritefonts
     private SpriteFont font;
     private int score = 0;
+    private Texture2D tex2DGreyBack;
 
     public Game1()
     {
@@ -54,6 +52,7 @@ public class Game1 : Game
         //attempts at playarea
         //attempts at spritefont
         font = Content.Load<SpriteFont>("BasicText");
+        tex2DGreyBack = Content.Load<Texture2D>("Sprites/greyBack");
     }
 
     protected override void Update(GameTime gameTime)
@@ -85,9 +84,11 @@ public class Game1 : Game
 
         _spriteBatch.Begin();
         
-        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(0, 0, 320, 320), Color.White);
+        //windown default size 800 x 480
+        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(240, 20, 320, 320), Color.White);
+        _spriteBatch.Draw(tex2DGreyBack, new Rectangle(240, 360, 320, 120), Color.White);
         graphicsController.Draw(_spriteBatch);
-        _spriteBatch.DrawString(font, "Some Text", new Vector2(50, 50), Color.Black);
+        _spriteBatch.DrawString(font, "Some Text", new Vector2(250, 370), Color.Black);
         
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
