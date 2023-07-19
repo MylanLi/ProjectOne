@@ -22,6 +22,15 @@ public class Game1 : Game
     private SpriteFont font;
     private int score = 0;
     private Texture2D tex2DGreyBack;
+    private BoardController boardController;
+
+    //hardcoded values for "level details"
+    public static class BoardDetails {
+        public const int rowColAmount = 5;
+        public const int sizePixels = 320;
+        public const int xLocation = 240;
+        public const int yLocation = 20;
+    }
 
     public Game1()
     {
@@ -34,6 +43,7 @@ public class Game1 : Game
     {
         // TODO: Add your initialization logic here
         graphicsController = new GraphicsController(Content);
+        boardController = new BoardController();
         base.Initialize();
     }
 
@@ -62,7 +72,7 @@ public class Game1 : Game
 
         // TODO: Add your update logic here
         animatedSprite.Update();
-
+        boardController.Update();
         /*
         MouseState newMouseState = Mouse.GetState();
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
@@ -85,7 +95,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
         
         //windown default size 800 x 480
-        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(240, 20, 320, 320), Color.White);
+        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(BoardDetails.xLocation, 20, 320, 320), Color.White);
         _spriteBatch.Draw(tex2DGreyBack, new Rectangle(240, 360, 320, 120), Color.White);
         graphicsController.Draw(_spriteBatch);
         _spriteBatch.DrawString(font, "Some Text", new Vector2(250, 370), Color.Black);
