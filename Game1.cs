@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -23,6 +24,9 @@ public class Game1 : Game
     private int score = 0;
     private Texture2D tex2DGreyBack;
     private BoardController boardController;
+
+    //temp string to display
+    public static String displayText = "some text";
 
     //hardcoded values for "level details"
     public static class BoardDetails {
@@ -70,9 +74,12 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        //pass this instead of having all the updates get it themselves
+        //try it with board controller for now
+        MouseState newMouseState = Mouse.GetState();
         // TODO: Add your update logic here
         animatedSprite.Update();
-        boardController.Update();
+        boardController.Update(newMouseState);
         /*
         MouseState newMouseState = Mouse.GetState();
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
@@ -95,10 +102,10 @@ public class Game1 : Game
         _spriteBatch.Begin();
         
         //windown default size 800 x 480
-        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(BoardDetails.xLocation, 20, 320, 320), Color.White);
+        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(BoardDetails.xLocation, BoardDetails.yLocation, BoardDetails.sizePixels, BoardDetails.sizePixels), Color.White);
         _spriteBatch.Draw(tex2DGreyBack, new Rectangle(240, 360, 320, 120), Color.White);
         graphicsController.Draw(_spriteBatch);
-        _spriteBatch.DrawString(font, "Some Text", new Vector2(250, 370), Color.Black);
+        _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
