@@ -1,5 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"e:/GameDev/ProjectOne/Content/Sprites/blue.png","e:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/blue.xnb","TextureProcessor","Texture2DContent",195,16469,0.203794
-"e:/GameDev/ProjectOne/Content/Sprites/FiveByFiveGrid.png","e:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/FiveByFiveGrid.xnb","TextureProcessor","Texture2DContent",3127,409685,0.0220564
-"e:/GameDev/ProjectOne/Content/Sprites/red.png","e:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/red.xnb","TextureProcessor","Texture2DContent",209,16469,0.0022894
-"e:/GameDev/ProjectOne/Content/Sprites/stars.png","e:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/stars.xnb","TextureProcessor","Texture2DContent",2338,49237,0.0028684
+"E:/GameDev/ProjectOne/Content/BasicText.spritefont","E:/GameDev/ProjectOne/Content/bin/DesktopGL/BasicText.xnb","FontDescriptionProcessor","SpriteFontContent",2008,70690,0.2004992
+"E:/GameDev/ProjectOne/Content/Sprites/blue.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/blue.xnb","TextureProcessor","Texture2DContent",195,16469,0.0077543
+"E:/GameDev/ProjectOne/Content/Sprites/FiveByFiveGrid.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/FiveByFiveGrid.xnb","TextureProcessor","Texture2DContent",3127,409685,0.0131966
+"E:/GameDev/ProjectOne/Content/Sprites/greyBack.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/greyBack.xnb","TextureProcessor","Texture2DContent",543,153685,0.1287071
+"E:/GameDev/ProjectOne/Content/Sprites/red.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/red.xnb","TextureProcessor","Texture2DContent",209,16469,0.0016668
+"E:/GameDev/ProjectOne/Content/Sprites/stars.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Sprites/stars.xnb","TextureProcessor","Texture2DContent",2338,49237,0.0049365
