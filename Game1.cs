@@ -47,7 +47,7 @@ public class Game1 : Game
     {
         // TODO: Add your initialization logic here
         graphicsController = new GraphicsController(Content);
-        boardController = new BoardController();
+        boardController = new BoardController(Content);
         base.Initialize();
     }
 
@@ -107,6 +107,8 @@ public class Game1 : Game
         graphicsController.Draw(_spriteBatch);
         _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
+        boardController.Draw(_spriteBatch);
+
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
         
