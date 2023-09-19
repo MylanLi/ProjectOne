@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Learning project about monogame
+//Aim is to make a 2D game
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,6 +14,10 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private GraphicsController graphicsController;
     //textures start here
+    //todo, looked into csharp values stuff, should be able to load texttures just once
+    //so figure out where to load textures, probably not here
+    //also, grapchicsController might be unecessary, better to have the different sections draw their sprites
+    //maybe rename it backgroundUIController
     private Texture2D tex2DFiveByFiveGrid;
     private Texture2D tex2DStars;
     //variables from learning, TODO: better way to do this
@@ -51,14 +57,13 @@ public class Game1 : Game
         base.Initialize();
     }
 
+    //todo: see comment at the top about not loading here, though itll be calling LoadContent methods from ehre
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
 
-        //tex2DBlue = Content.Load<Texture2D>("Sprites/blue");
-        //tex2DRed = Content.Load<Texture2D>("Sprites/red");
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
         tex2DStars = Content.Load<Texture2D>("Sprites/stars");
         animatedSprite = new AnimatedSprite(tex2DStars,1,3);
@@ -80,14 +85,6 @@ public class Game1 : Game
         // TODO: Add your update logic here
         animatedSprite.Update();
         boardController.Update(newMouseState);
-        /*
-        MouseState newMouseState = Mouse.GetState();
-        if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-            starLocation = new Vector2(newMouseState.X, newMouseState.Y);
-        }
-        oldMouseState = newMouseState;
-        */
-
 
         base.Update(gameTime);
     }
@@ -112,7 +109,6 @@ public class Game1 : Game
         _spriteBatch.End();
         animatedSprite.Draw(gameTime, _spriteBatch);
         
-        //animatedSprite.Draw(gameTime, _spriteBatch, starLocation);
 
         base.Draw(gameTime);
     }
