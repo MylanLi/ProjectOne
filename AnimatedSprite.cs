@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace ProjectOne;
 
-public class AnimatedSprite {
+public class AnimatedSprite : GraphicSprite {
 
     public Texture2D Texture { get; set; }
     public int Rows { get; set; }
@@ -13,15 +14,17 @@ public class AnimatedSprite {
     private int totalFrames;
     private double animationTimer;
     private MouseState oldMouseState;
-    private Vector2 starLocation = new Vector2(180,180);
+    private Vector2 starLocation;
 
-    public AnimatedSprite(Texture2D texture, int rows, int columns) {
+    public AnimatedSprite(Texture2D texture, int rows, int columns, Vector2 location) {
         Texture = texture;
         Rows = rows;
         Columns = columns;
         currentFrame = 0;
         totalFrames = Rows * Columns;
         animationTimer = 0;
+        tileColour = "Star";
+        starLocation = location;
     }
 
     public void Update() {
@@ -54,11 +57,9 @@ public class AnimatedSprite {
             animationTimer -= 2;
         }
     
-        spriteBatch.Begin();
+        //spriteBatch.Begin();
         spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-        spriteBatch.End();
+        //spriteBatch.End();
     }
-
-
 
 }

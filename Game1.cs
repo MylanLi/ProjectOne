@@ -66,7 +66,7 @@ public class Game1 : Game
 
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
         tex2DStars = Content.Load<Texture2D>("Sprites/stars");
-        animatedSprite = new AnimatedSprite(tex2DStars,1,3);
+        //animatedSprite = new AnimatedSprite(tex2DStars,1,3);
     
         //attempts at playarea
         //attempts at spritefont
@@ -83,7 +83,7 @@ public class Game1 : Game
         //try it with board controller for now
         MouseState newMouseState = Mouse.GetState();
         // TODO: Add your update logic here
-        animatedSprite.Update();
+        //animatedSprite.Update();
         boardController.Update(newMouseState);
 
         base.Update(gameTime);
@@ -104,10 +104,10 @@ public class Game1 : Game
         graphicsController.Draw(_spriteBatch);
         _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
-        boardController.Draw(_spriteBatch);
-
+        boardController.Draw(gameTime, _spriteBatch);
+        //animatedSprite.Draw(gameTime, _spriteBatch);
         _spriteBatch.End();
-        animatedSprite.Draw(gameTime, _spriteBatch);
+        
         
 
         base.Draw(gameTime);

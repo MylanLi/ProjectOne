@@ -16,9 +16,10 @@ public class BoardController {
     private int boardRowAmount;
     private int boardColAmount;
     //hard code it for testing i guess
-    private BasicSprite[] spriteList = new BasicSprite[4];
+    private GraphicSprite[] spriteList = new GraphicSprite[6];
     private Texture2D blueTexture;
     private Texture2D redTexture;
+    private Texture2D starTexture;
 
     //constructor, what to do though...
     public BoardController(ContentManager content) {
@@ -28,15 +29,19 @@ public class BoardController {
         boardRowAmount = Game1.BoardDetails.rowColAmount;
         boardColAmount = Game1.BoardDetails.rowColAmount;
 
+        blueTexture = content.Load<Texture2D>("Sprites/blue");
+        redTexture = content.Load<Texture2D>("Sprites/red");
+        starTexture = content.Load<Texture2D>("Sprites/stars");
 
         //tseting w hardcode
         spriteList[0] = new BasicSprite("Blue");
         spriteList[1] = new BasicSprite("Red");
         spriteList[2] = new BasicSprite("Red");
         spriteList[3] = new BasicSprite("Blue");
+        spriteList[4] = new AnimatedSprite(starTexture,1,3, new Vector2(180,180));
+        spriteList[5] = new AnimatedSprite(starTexture,1,3, new Vector2(280,280));
 
-        blueTexture = content.Load<Texture2D>("Sprites/blue");
-        redTexture = content.Load<Texture2D>("Sprites/red");
+
     }
 
     //have this in the main update to "listen" for clicks
@@ -46,10 +51,15 @@ public class BoardController {
             CalculateSquare(newMouseState);
         }
         oldMouseState = newMouseState;
+        //downcasting, apparently bad?
+        ((AnimatedSprite)spriteList[4]).Update();
+        //the second one shouldnt follow click then
+        //((AnimatedSprite)spriteList[5]).Update();
+
     }
 
     //todo, change the location lol
-    public void Draw(SpriteBatch spriteBatch) {
+    public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         for (int i = 0; i < spriteList.Length; i++) {
             switch (spriteList[i].getTileColour()) {
                 case "Blue":
@@ -57,6 +67,9 @@ public class BoardController {
                     break;
                 case "Red":
                     spriteBatch.Draw(redTexture, new Rectangle(138, 90, 64, 64), Color.White);
+                    break;
+                case "Star":
+                    ((AnimatedSprite)spriteList[i]).Draw(gameTime, spriteBatch);
                     break;
             }
         }
