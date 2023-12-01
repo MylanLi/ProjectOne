@@ -83,8 +83,8 @@ public class BoardController {
         //todo, check the edges of sprites
         if (someMouseState.X >= 240 && someMouseState.X <= (240 + 320)) {
             if (someMouseState.Y >= 20 && someMouseState.Y <= (20+320)) {
-                int xSquare = ((someMouseState.X - 240)/(320/5)) + 1;
-                int ySquare = ((someMouseState.Y - 20)/(320/5)) + 1;
+                int xSquare = ((someMouseState.X - 240)/(320/boardRowAmount)) + 1;
+                int ySquare = ((someMouseState.Y - 20)/(320/boardColAmount)) + 1;
                 Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
             }
         } else {

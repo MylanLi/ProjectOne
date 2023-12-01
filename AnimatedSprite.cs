@@ -45,7 +45,6 @@ public class AnimatedSprite : GraphicSprite {
         int column = currentFrame % Columns;
     
         Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-        //Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
         Rectangle destinationRectangle = new Rectangle((int)starLocation.X, (int)starLocation.Y, width, height);
 
         animationTimer += gameTime.ElapsedGameTime.TotalSeconds;

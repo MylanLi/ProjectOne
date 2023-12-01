@@ -24,20 +24,10 @@ public class Game1 : Game
     //TODO: decide whether to move the grid somewhere else?
     private Texture2D tex2DFiveByFiveGrid;
 
-    /*
-    //Leftover variables remove them
-    private Texture2D tex2DStars;
-    //variables from learning, TODO: better way to do this
-    private AnimatedSprite animatedSprite;
-    private Vector2 starLocation = new Vector2(180,180);
-    */
-
     //attempts at playarea
     //attempts at drawing spritefonts
     private SpriteFont font;
 
-    //Leftover variable, remove
-    //private int score = 0;
     private Texture2D tex2DGreyBack;
     private BoardController boardController;
 
@@ -76,10 +66,6 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
 
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
-        
-        //remove leftover lines
-        //tex2DStars = Content.Load<Texture2D>("Sprites/stars");
-        //animatedSprite = new AnimatedSprite(tex2DStars,1,3);
     
         //attempts at playarea
         //attempts at spritefont
@@ -97,9 +83,6 @@ public class Game1 : Game
         MouseState newMouseState = Mouse.GetState();
         // TODO: Add your update logic here
 
-        //remove leftover line
-        //animatedSprite.Update();
-
         boardController.Update(newMouseState);
 
         base.Update(gameTime);
@@ -110,8 +93,6 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        
-
         _spriteBatch.Begin();
         
         //windown default size 800 x 480
@@ -122,13 +103,8 @@ public class Game1 : Game
         
         boardController.Draw(gameTime, _spriteBatch);
 
-        //remove leftover line
-        //animatedSprite.Draw(gameTime, _spriteBatch);
-        
         _spriteBatch.End();
         
-        
-
         base.Draw(gameTime);
     }
 }
