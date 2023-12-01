@@ -1,5 +1,7 @@
 //Controller for managing clicks on the board
-//Clicks on the board 
+//i.e. clicks on the screen would be handled by logic here
+//Should just be one instance
+//Idea: Abstract class for clickable screen space?
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -21,11 +23,11 @@ public class BoardController {
     private Texture2D redTexture;
     private Texture2D starTexture;
 
-    //constructor, what to do though...
+    //constructor
     public BoardController(ContentManager content) {
         //i think this is probably necessary for the first click, but is it the best way? todo
         oldMouseState = Mouse.GetState();
-        //for now just directly take it from main class hardcoded values
+        //for now just directly take it from main class hardcoded values, shift to the static one later?
         boardRowAmount = Game1.BoardDetails.rowColAmount;
         boardColAmount = Game1.BoardDetails.rowColAmount;
 

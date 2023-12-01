@@ -9,32 +9,43 @@ namespace ProjectOne;
 
 public class Game1 : Game
 {
-    
+    //these two seem to be inbuilts
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    
+    //TODO: repurpose GraphicsController, as per below
     private GraphicsController graphicsController;
     //textures start here
     //todo, looked into csharp values stuff, should be able to load texttures just once
     //so figure out where to load textures, probably not here
     //also, grapchicsController might be unecessary, better to have the different sections draw their sprites
     //maybe rename it backgroundUIController
+
+    //TODO: decide whether to move the grid somewhere else?
     private Texture2D tex2DFiveByFiveGrid;
+
+    /*
+    //Leftover variables remove them
     private Texture2D tex2DStars;
     //variables from learning, TODO: better way to do this
     private AnimatedSprite animatedSprite;
     private Vector2 starLocation = new Vector2(180,180);
+    */
 
     //attempts at playarea
     //attempts at drawing spritefonts
     private SpriteFont font;
-    private int score = 0;
+
+    //Leftover variable, remove
+    //private int score = 0;
     private Texture2D tex2DGreyBack;
     private BoardController boardController;
 
     //temp string to display
+    //TODO: currently coupled to boardcontroller, change
     public static String displayText = "some text";
 
-    //hardcoded values for "level details"
+    //temp hardcoded values for "level details"
     public static class BoardDetails {
         public const int rowColAmount = 5;
         public const int sizePixels = 320;
@@ -65,7 +76,9 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
 
         tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
-        tex2DStars = Content.Load<Texture2D>("Sprites/stars");
+        
+        //remove leftover lines
+        //tex2DStars = Content.Load<Texture2D>("Sprites/stars");
         //animatedSprite = new AnimatedSprite(tex2DStars,1,3);
     
         //attempts at playarea
@@ -83,7 +96,10 @@ public class Game1 : Game
         //try it with board controller for now
         MouseState newMouseState = Mouse.GetState();
         // TODO: Add your update logic here
+
+        //remove leftover line
         //animatedSprite.Update();
+
         boardController.Update(newMouseState);
 
         base.Update(gameTime);
@@ -105,7 +121,10 @@ public class Game1 : Game
         _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
         boardController.Draw(gameTime, _spriteBatch);
+
+        //remove leftover line
         //animatedSprite.Draw(gameTime, _spriteBatch);
+        
         _spriteBatch.End();
         
         
