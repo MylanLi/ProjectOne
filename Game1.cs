@@ -21,14 +21,9 @@ public class Game1 : Game
     //also, grapchicsController might be unecessary, better to have the different sections draw their sprites
     //maybe rename it backgroundUIController
 
-    //TODO: decide whether to move the grid somewhere else?
-    private Texture2D tex2DFiveByFiveGrid;
-
     //attempts at playarea
     //attempts at drawing spritefonts
     private SpriteFont font;
-
-    private Texture2D tex2DGreyBack;
     private BoardController boardController;
 
     //temp string to display
@@ -63,14 +58,8 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
-
-        tex2DFiveByFiveGrid = Content.Load<Texture2D>("Sprites/FiveByFiveGrid");
-    
-        //attempts at playarea
         //attempts at spritefont
         font = Content.Load<SpriteFont>("BasicText");
-        tex2DGreyBack = Content.Load<Texture2D>("Sprites/greyBack");
     }
 
     protected override void Update(GameTime gameTime)
@@ -96,8 +85,6 @@ public class Game1 : Game
         _spriteBatch.Begin();
         
         //windown default size 800 x 480
-        _spriteBatch.Draw(tex2DFiveByFiveGrid, new Rectangle(BoardDetails.xLocation, BoardDetails.yLocation, BoardDetails.sizePixels, BoardDetails.sizePixels), Color.White);
-        _spriteBatch.Draw(tex2DGreyBack, new Rectangle(240, 360, 320, 120), Color.White);
         graphicsController.Draw(_spriteBatch);
         _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
