@@ -1,3 +1,5 @@
+//Controller just for loading in background sprites for now
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -5,14 +7,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOne;
 
-public class GraphicsController {
+public class BackgroundUIController {
 
     //keeping the texture list for now as a reminder about the array loading
     //private Texture2D[] tex2DList;
     private Texture2D tex2DFiveByFiveGrid;
     private Texture2D tex2DGreyBackground;
 
-    public GraphicsController(ContentManager content) {
+    public BackgroundUIController(ContentManager content) {
         /*
         tex2DList = new Texture2D[2];
         tex2DList[0] = content.Load<Texture2D>("Sprites/blue");

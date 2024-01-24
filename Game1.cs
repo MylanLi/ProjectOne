@@ -13,13 +13,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     
-    //TODO: repurpose GraphicsController, as per below
-    private GraphicsController graphicsController;
-    //textures start here
-    //todo, looked into csharp values stuff, should be able to load texttures just once
-    //so figure out where to load textures, probably not here
-    //also, grapchicsController might be unecessary, better to have the different sections draw their sprites
-    //maybe rename it backgroundUIController
+    private BackgroundUIController backgroundUIController;
 
     //attempts at playarea
     //attempts at drawing spritefonts
@@ -48,7 +42,7 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-        graphicsController = new GraphicsController(Content);
+        backgroundUIController = new BackgroundUIController(Content);
         boardController = new BoardController(Content);
         base.Initialize();
     }
@@ -85,7 +79,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
         
         //windown default size 800 x 480
-        graphicsController.Draw(_spriteBatch);
+        backgroundUIController.Draw(_spriteBatch);
         _spriteBatch.DrawString(font, displayText, new Vector2(250, 370), Color.Black);
         
         boardController.Draw(gameTime, _spriteBatch);
