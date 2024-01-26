@@ -3,7 +3,8 @@ Hello, I'm learning more about programming by playing with Monogame.
 And also to get used to using git as well as trying to add this to my routine.
 
 Current Goal:
-- Clean up the code
+- Clean up the code; progress done on this, but still haven't cleaned up everything yet
+- Aim to get basic functionality down: move pieces on the board, add/remove pieces, and detect groupings of pieces
 
 Documenting Progress:
 

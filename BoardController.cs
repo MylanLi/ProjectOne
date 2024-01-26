@@ -23,6 +23,9 @@ public class BoardController {
     private Texture2D redTexture;
     private Texture2D starTexture;
 
+    //boardpiece testing
+    private BoardPiece testPiece;
+
     //constructor
     public BoardController(ContentManager content) {
         //i think this is probably necessary for the first click, but is it the best way? todo
@@ -31,19 +34,25 @@ public class BoardController {
         boardRowAmount = Game1.BoardDetails.rowColAmount;
         boardColAmount = Game1.BoardDetails.rowColAmount;
 
+        //TOTHINK: do i have the textures all over the place? seems bad
         blueTexture = content.Load<Texture2D>("Sprites/blue");
         redTexture = content.Load<Texture2D>("Sprites/red");
         starTexture = content.Load<Texture2D>("Sprites/stars");
 
+        /*
         //tseting w hardcode
         spriteList[0] = new BasicSprite("Blue");
         spriteList[1] = new BasicSprite("Red");
         spriteList[2] = new BasicSprite("Red");
         spriteList[3] = new BasicSprite("Blue");
-        spriteList[4] = new AnimatedSprite(starTexture,1,3, new Vector2(180,180));
+        
         spriteList[5] = new AnimatedSprite(starTexture,1,3, new Vector2(280,280));
+        */
 
+        spriteList[4] = new AnimatedSprite(starTexture,1,3, new Vector2(180,180));
 
+        //hardcode a BoardPiece for testing
+        testPiece = new BoardPiece(new BasicSprite("Blue", blueTexture),200,350);
     }
 
     //have this in the main update to "listen" for clicks
@@ -62,6 +71,8 @@ public class BoardController {
 
     //todo, change the location lol
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        /*
+        //looping through the sprite list
         for (int i = 0; i < spriteList.Length; i++) {
             switch (spriteList[i].getTileColour()) {
                 case "Blue":
@@ -75,6 +86,11 @@ public class BoardController {
                     break;
             }
         }
+        */
+        
+        //hardcoding this while the loop is being worked on
+        ((AnimatedSprite)spriteList[4]).Draw(gameTime, spriteBatch);
+        testPiece.Draw(spriteBatch);
     }
 
     //figure out which square was clicked
@@ -88,6 +104,7 @@ public class BoardController {
                 Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
             }
         } else {
+            //TODO: fix issue where clicking on the grey background doesnt change from a grid number to not on board
             Game1.displayText = "not on board";
         }
     }
