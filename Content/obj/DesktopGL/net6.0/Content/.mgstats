@@ -5,3 +5,4 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "E:/GameDev/ProjectOne/Content/Sprites/greyBack.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/greyBack.xnb","TextureProcessor","Texture2DContent",543,153685,0.0275954
 "E:/GameDev/ProjectOne/Content/Sprites/red.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/red.xnb","TextureProcessor","Texture2DContent",209,16469,0.0077411
 "E:/GameDev/ProjectOne/Content/Sprites/stars.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/stars.xnb","TextureProcessor","Texture2DContent",2338,49237,0.3739973
+"E:/GameDev/ProjectOne/Content/Sprites/yellowOutline.png","E:/GameDev/ProjectOne/Content/bin/DesktopGL/Content/Sprites/yellowOutline.xnb","TextureProcessor","Texture2DContent",189,6485,0.2296341

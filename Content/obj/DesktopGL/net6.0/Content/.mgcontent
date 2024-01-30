@@ -10,8 +10,10 @@
     <File>E:/GameDev/ProjectOne/Content/Sprites/greyBack.png</File>
     <File>E:/GameDev/ProjectOne/Content/Sprites/red.png</File>
     <File>E:/GameDev/ProjectOne/Content/Sprites/stars.png</File>
+    <File>E:/GameDev/ProjectOne/Content/Sprites/yellowOutline.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -22,9 +22,15 @@ public class BoardController {
     private Texture2D blueTexture;
     private Texture2D redTexture;
     private Texture2D starTexture;
+    private Texture2D yellowOutline;
 
     //boardpiece testing
     private BoardPiece testPiece;
+
+    //for board logic
+    private Boolean currentlySelected = false;
+    private int selectedX;
+    private int selectedY;
 
     //constructor
     public BoardController(ContentManager content) {
@@ -38,6 +44,7 @@ public class BoardController {
         blueTexture = content.Load<Texture2D>("Sprites/blue");
         redTexture = content.Load<Texture2D>("Sprites/red");
         starTexture = content.Load<Texture2D>("Sprites/stars");
+        yellowOutline = content.Load<Texture2D>("Sprites/yellowOutline");
 
         /*
         //tseting w hardcode
@@ -57,15 +64,30 @@ public class BoardController {
 
     //have this in the main update to "listen" for clicks
     public void Update(MouseState newMouseState) {
+        int xSquare;
+        int ySquare;
 
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-            CalculateSquare(newMouseState);
+            (xSquare, ySquare) = CalculateSquare(newMouseState);
+            Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
+            //TODO: not on board when its 0,0
+            if(xSquare != 0) {
+                if(currentlySelected) {
+                    currentlySelected = false;
+                } else {
+                    currentlySelected = true;
+                    selectedX = xSquare;
+                    selectedY = ySquare;
+                }
+            }
         }
         oldMouseState = newMouseState;
         //downcasting, apparently bad?
         ((AnimatedSprite)spriteList[4]).Update();
         //the second one shouldnt follow click then
         //((AnimatedSprite)spriteList[5]).Update();
+
+        
 
     }
 
@@ -91,21 +113,29 @@ public class BoardController {
         //hardcoding this while the loop is being worked on
         ((AnimatedSprite)spriteList[4]).Draw(gameTime, spriteBatch);
         testPiece.Draw(spriteBatch);
+        if(currentlySelected) {
+            spriteBatch.Draw(yellowOutline, new Rectangle(100,100,40,40), Color.White);
+            //TODO: fix size of outline, put it on the square
+        }
     }
 
     //figure out which square was clicked
-    private void CalculateSquare(MouseState someMouseState) {
+    private (int, int) CalculateSquare(MouseState someMouseState) {
 
         //todo, check the edges of sprites
         if (someMouseState.X >= 240 && someMouseState.X <= (240 + 320)) {
             if (someMouseState.Y >= 20 && someMouseState.Y <= (20+320)) {
                 int xSquare = ((someMouseState.X - 240)/(320/boardRowAmount)) + 1;
                 int ySquare = ((someMouseState.Y - 20)/(320/boardColAmount)) + 1;
-                Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
+                //Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
+                return(xSquare, ySquare);
             }
-        } else {
-            //TODO: fix issue where clicking on the grey background doesnt change from a grid number to not on board
-            Game1.displayText = "not on board";
         }
+
+        //TODO: fix issue where clicking on the grey background doesnt change from a grid number to not on board
+        //Game1.displayText = "not on board";
+        return (0,0);
+        
+        
     }
 }
