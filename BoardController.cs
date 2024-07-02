@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ProjectOne;
 
@@ -112,7 +113,10 @@ public class BoardController {
         
         //hardcoding this while the loop is being worked on
         ((AnimatedSprite)spriteList[4]).Draw(gameTime, spriteBatch);
-        testPiece.Draw(spriteBatch);
+        //doesn't show up
+        //testPiece.Draw(spriteBatch);
+        //spriteBatch.Draw(DetermineColour(testPiece.myColour), new Rectangle(138, 90, 64, 64), Color.White);
+        DrawHelper(spriteBatch, testPiece);
         if(currentlySelected) {
             spriteBatch.Draw(yellowOutline, new Rectangle(100,100,40,40), Color.White);
             //TODO: fix size of outline, put it on the square
@@ -137,5 +141,20 @@ public class BoardController {
         return (0,0);
         
         
+    }
+
+    //for drawing pieces using their own stored vars
+    private void DrawHelper(SpriteBatch spriteBatch, BoardPiece drawnPiece) {
+        Texture2D drawColour;
+
+        //TODO: expand this
+        if (drawnPiece.myColour == "red") {
+            drawColour = redTexture;
+        } else {
+            drawColour = blueTexture;
+        }
+
+        //TODO: the 64 by 64 size to be referenced from somewhere
+        spriteBatch.Draw(drawColour, new Rectangle(drawnPiece.gridXLoc, drawnPiece.gridYLoc, 64, 64), Color.White);
     }
 }

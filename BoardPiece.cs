@@ -16,14 +16,13 @@ public class BoardPiece {
     //TODO: consider vector2s again
     public int gridXLoc {get; set;}
     public int gridYLoc {get; set;}
+    public string myColour {get; set;}
 
     public BoardPiece(BasicSprite sprite, int locX, int locY) {
         pieceSprite = sprite;
         gridXLoc = locX;
         gridYLoc = locY;
-    }
-
-    public void Draw(SpriteBatch spriteBatch) {
-        spriteBatch.Draw(pieceSprite.Texture,new Rectangle(gridXLoc,gridYLoc,40,40), Color.White);
+        //TODO: get this string from a, forgot the name, but a reference file?
+        myColour = "red";
     }
 }
