@@ -118,7 +118,8 @@ public class BoardController {
         //spriteBatch.Draw(DetermineColour(testPiece.myColour), new Rectangle(138, 90, 64, 64), Color.White);
         DrawHelper(spriteBatch, testPiece);
         if(currentlySelected) {
-            spriteBatch.Draw(yellowOutline, new Rectangle(100,100,40,40), Color.White);
+            var (newXLoc, newYLoc) = SquareToLocation(selectedX,selectedY);
+            spriteBatch.Draw(yellowOutline, new Rectangle(newXLoc,newYLoc,64,64), Color.White);
             //TODO: fix size of outline, put it on the square
         }
     }
@@ -127,6 +128,7 @@ public class BoardController {
     private (int, int) CalculateSquare(MouseState someMouseState) {
 
         //todo, check the edges of sprites
+        //todo fix the 320 magic number (size of board)
         if (someMouseState.X >= 240 && someMouseState.X <= (240 + 320)) {
             if (someMouseState.Y >= 20 && someMouseState.Y <= (20+320)) {
                 int xSquare = ((someMouseState.X - 240)/(320/boardRowAmount)) + 1;
@@ -138,9 +140,21 @@ public class BoardController {
 
         //TODO: fix issue where clicking on the grey background doesnt change from a grid number to not on board
         //Game1.displayText = "not on board";
-        return (0,0);
-        
-        
+        return (0,0);      
+    }
+
+    private (int, int) SquareToLocation(int xSquare, int ySquare) {
+        int newXLoc = 0;
+        int newYLoc = 0;
+
+        //todo: fix magic numbers
+        if ( xSquare > 0 && xSquare <= boardRowAmount && ySquare > 0 && ySquare <= boardColAmount ) {
+            newXLoc = 240 + (xSquare - 1)*64;
+            newYLoc = 20 + (ySquare - 1)*64;
+        }
+
+        //todo: unexpected error handling
+        return(newXLoc,newYLoc);
     }
 
     //for drawing pieces using their own stored vars
