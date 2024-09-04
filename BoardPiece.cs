@@ -23,6 +23,6 @@ public class BoardPiece {
         gridXLoc = locX;
         gridYLoc = locY;
         //TODO: get this string from a, forgot the name, but a reference file?
-        myColour = "red";
+        myColour = sprite.tileColour;
     }
 }

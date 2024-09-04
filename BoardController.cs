@@ -60,7 +60,7 @@ public class BoardController {
         spriteList[4] = new AnimatedSprite(starTexture,1,3, new Vector2(180,180));
 
         //hardcode a BoardPiece for testing
-        testPiece = new BoardPiece(new BasicSprite("Blue", blueTexture),200,350);
+        testPiece = new BoardPiece(new BasicSprite("Blue", blueTexture),200,120);
     }
 
     //have this in the main update to "listen" for clicks
@@ -148,7 +148,7 @@ public class BoardController {
         Texture2D drawColour;
 
         //TODO: expand this
-        if (drawnPiece.myColour == "red") {
+        if (drawnPiece.myColour == "Red") {
             drawColour = redTexture;
         } else {
             drawColour = blueTexture;
