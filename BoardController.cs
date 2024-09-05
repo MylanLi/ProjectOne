@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 
 namespace ProjectOne;
@@ -18,8 +19,12 @@ public class BoardController {
     //constants about the board
     private int boardRowAmount;
     private int boardColAmount;
+
     //hard code it for testing i guess
     private GraphicSprite[] spriteList = new GraphicSprite[6];
+    //todo, remove code that uses the GraphicSprite array, outdated now that BoardPiece class exists
+    private BoardPiece[,] boardPieceList;
+
     private Texture2D blueTexture;
     private Texture2D redTexture;
     private Texture2D starTexture;
@@ -61,6 +66,12 @@ public class BoardController {
 
         //hardcode a BoardPiece for testing
         testPiece = new BoardPiece(new BasicSprite("Blue", blueTexture),200,120);
+
+        boardPieceList = new BoardPiece[boardRowAmount,boardColAmount];
+        //try and test out controllling the board and moving pieces around
+        CreateBoardPiece(1, 2, "Red",boardPieceList);
+        CreateBoardPiece(4, 3, "Red",boardPieceList);
+
     }
 
     //have this in the main update to "listen" for clicks
@@ -110,6 +121,17 @@ public class BoardController {
             }
         }
         */
+
+        //testing going through array and drawing the pieces
+        for(int i = 0; i < boardRowAmount; i++) {
+            for(int j = 0; j < boardColAmount; j++) {
+                if(boardPieceList[i,j] == null) {
+                    continue;
+                } else {
+                    DrawHelper(spriteBatch, boardPieceList[i,j]);
+                }
+            }
+        }
         
         //hardcoding this while the loop is being worked on
         ((AnimatedSprite)spriteList[4]).Draw(gameTime, spriteBatch);
@@ -170,5 +192,19 @@ public class BoardController {
 
         //TODO: the 64 by 64 size to be referenced from somewhere
         spriteBatch.Draw(drawColour, new Rectangle(drawnPiece.gridXLoc, drawnPiece.gridYLoc, 64, 64), Color.White);
+    }
+
+    private void CreateBoardPiece(int xSpot, int ySpot, String pieceColour, BoardPiece[,] boardPieceList) {
+        var (xLoc, yLoc) = SquareToLocation(xSpot, ySpot);
+
+        Texture2D pieceTexture;
+
+        if (pieceColour == "Red") {
+            pieceTexture = redTexture;
+        } else {
+            pieceTexture = blueTexture;
+        }
+
+        boardPieceList[xSpot - 1, ySpot - 1] = new BoardPiece(new BasicSprite(pieceColour, pieceTexture), xLoc, yLoc);
     }
 }
