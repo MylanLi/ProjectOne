@@ -52,16 +52,6 @@ public class BoardController {
         starTexture = content.Load<Texture2D>("Sprites/stars");
         yellowOutline = content.Load<Texture2D>("Sprites/yellowOutline");
 
-        /*
-        //tseting w hardcode
-        spriteList[0] = new BasicSprite("Blue");
-        spriteList[1] = new BasicSprite("Red");
-        spriteList[2] = new BasicSprite("Red");
-        spriteList[3] = new BasicSprite("Blue");
-        
-        spriteList[5] = new AnimatedSprite(starTexture,1,3, new Vector2(280,280));
-        */
-
         spriteList[4] = new AnimatedSprite(starTexture,1,3, new Vector2(180,180));
 
         //hardcode a BoardPiece for testing
@@ -105,22 +95,6 @@ public class BoardController {
 
     //todo, change the location lol
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        /*
-        //looping through the sprite list
-        for (int i = 0; i < spriteList.Length; i++) {
-            switch (spriteList[i].getTileColour()) {
-                case "Blue":
-                    spriteBatch.Draw(blueTexture, new Rectangle(240, 167, 64, 64), Color.White);
-                    break;
-                case "Red":
-                    spriteBatch.Draw(redTexture, new Rectangle(138, 90, 64, 64), Color.White);
-                    break;
-                case "Star":
-                    ((AnimatedSprite)spriteList[i]).Draw(gameTime, spriteBatch);
-                    break;
-            }
-        }
-        */
 
         //testing going through array and drawing the pieces
         for(int i = 0; i < boardRowAmount; i++) {
@@ -135,9 +109,7 @@ public class BoardController {
         
         //hardcoding this while the loop is being worked on
         ((AnimatedSprite)spriteList[4]).Draw(gameTime, spriteBatch);
-        //doesn't show up
-        //testPiece.Draw(spriteBatch);
-        //spriteBatch.Draw(DetermineColour(testPiece.myColour), new Rectangle(138, 90, 64, 64), Color.White);
+
         DrawHelper(spriteBatch, testPiece);
         if(currentlySelected) {
             var (newXLoc, newYLoc) = SquareToLocation(selectedX,selectedY);
