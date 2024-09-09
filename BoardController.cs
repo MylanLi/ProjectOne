@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 
 namespace ProjectOne;
 
@@ -69,12 +70,25 @@ public class BoardController {
         int xSquare;
         int ySquare;
 
+        //for testing moving a square
+        BoardPiece tempPiece;
+
         if(newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
             (xSquare, ySquare) = CalculateSquare(newMouseState);
             Game1.displayText = xSquare.ToString() + " , " + ySquare.ToString();
             //TODO: not on board when its 0,0
             if(xSquare != 0) {
                 if(currentlySelected) {
+                    //testing moving a square
+                    if((boardPieceList[selectedX -1,selectedY -1] != null) && (boardPieceList[xSquare -1, ySquare -1] == null)) {
+                        tempPiece = boardPieceList[selectedX -1,selectedY -1];
+
+                        (tempPiece.gridXLoc, tempPiece.gridYLoc) = SquareToLocation(xSquare, ySquare);
+
+                        boardPieceList[xSquare -1, ySquare -1] = tempPiece;
+                        boardPieceList[selectedX -1,selectedY -1] = null;
+                    }
+                    //----
                     currentlySelected = false;
                 } else {
                     currentlySelected = true;
